@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="211px" height="260px" viewBox="0 0 211 260" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>sailboat (2)</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Home-Screen-Boat" transform="translate(-4.000000, -288.000000)">
+            <g id="boat" transform="translate(-38.000000, 287.000000)">
+                <g id="sailboat-(2)" transform="translate(145.000000, 160.500000) scale(-1, 1) translate(-145.000000, -160.500000) translate(1.000000, 0.500000)">
+                    <g id="denmark" transform="translate(123.500000, 17.000000) scale(-1, 1) translate(-123.500000, -17.000000) translate(105.000000, 0.500000)">
+                        <path d="M36.3903874,24 L2.60961265,24 C2.27295334,24 2,23.7262258 2,23.3885541 L2,1.61144587 C2,1.27377416 2.27295334,1 2.60961265,1 L36.3903874,1 C36.7270467,1 37,1.27377416 37,1.61144587 L37,23.3885541 C37,23.7262258 36.7271189,24 36.3903874,24 Z" id="Path" fill="#FF4B55"></path>
+                        <polygon id="Path" fill="#F5F5F5" points="37 10.6842143 16.4827785 10.6842143 16.4827785 1 12.8620839 1 12.8620839 10.6842143 2 10.6842143 2 14.3157857 12.8620839 14.3157857 12.8620839 24 16.4827785 24 16.4827785 14.3157857 37 14.3157857"></polygon>
+                        <path d="M1,33 C0.447704215,33 0,32.3913981 0,31.6406872 L0,1.34815166 C0,0.603554502 0.44404351,0 0.991789562,0 L1,0 C1.55229578,0 2,0.608601896 2,1.35938389 L2,31.6407583 C2,32.3913981 1.55229578,33 1,33 Z" id="Path" fill="#2E3033"></path>
+                    </g>
+                    <polygon id="XMLID_551_" fill="#FFC34D" points="139 48.5 139 228.5 224 228.5"></polygon>
+                    <path d="M129.255069,50.0185259 C87.9785169,86.9890927 64.523848,137.009549 63.2107868,190.866192 L63,199.5 L145,199.5 L145,36.5 L129.255069,50.0185259 Z" id="XMLID_416_" fill="#FFEA80"></path>
+                    <polygon id="XMLID_565_" fill="#B36B24" points="133 32.5 150 32.5 150 224.5 133 224.5"></polygon>
+                    <polygon id="XMLID_3602_" fill="#804D19" points="141 32.5 150 32.5 150 224.5 141 224.5"></polygon>
+                    <polygon id="XMLID_580_" fill="#FF9933" points="36 216.5 53.3643658 260.5 233.757736 260.5 246 216.5"></polygon>
+                    <polygon id="XMLID_3599_" fill="#FF7733" points="142 216.5 142 260.5 234.748638 260.5 247 216.5"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
