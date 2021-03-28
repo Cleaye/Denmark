@@ -19,6 +19,10 @@ public class ItemPanelUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI itemTitle;
 
     [SerializeField] private GameObject informationPanel;
+    private InformationPanelManager panelScript;
+
+    [SerializeField] private SpriteRenderer highlightedItemIcon;
+    InventorySlot highlightedItemSlot;
 
     void Start()
     {
@@ -27,6 +31,8 @@ public class ItemPanelUI : MonoBehaviour
 
         backpackSlots = backpackItemsParent.GetComponentsInChildren<InventorySlot>();
         discoverySlots = discoveredItemsParent.GetComponentsInChildren<InventorySlot>();
+
+        panelScript = informationPanel.GetComponent<InformationPanelManager>();
     }
 
     public void OpenItem(InventorySlot slot) 
@@ -34,7 +40,20 @@ public class ItemPanelUI : MonoBehaviour
         itemImage.sprite = slot.item.itemImage;
         itemInformation.text = slot.item.itemInformation;
         itemTitle.text = slot.item.name;
+        panelScript.SetItem(slot.item);
         informationPanel.SetActive(true);
+        inventory.RemoveFromDiscoveredItems(slot.item);
+    }
+
+    public void OpenHighlightedItem()
+    {
+        OpenItem(highlightedItemSlot);
+    }
+
+    public void HighlightItem(InventorySlot slot)
+    {
+        highlightedItemSlot = slot;
+        highlightedItemIcon.sprite = slot.item.icon;
     }
 
     void UpdateUI() 

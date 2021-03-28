@@ -38,6 +38,7 @@ public class Inventory : MonoBehaviour
         }
 
         backpackItems.Add(item);
+        Debug.Log("Succesfully added item!");
 
         if(onItemChangedCallback != null)
             onItemChangedCallback.Invoke();
