@@ -8,9 +8,4 @@ public class Item : ScriptableObject
     public Sprite icon = null;
     public string itemInformation = "Information";
     public Sprite itemImage = null;
-
-    public void AddItem() {
-        Inventory.instance.Add(this);
-    }
-
 }

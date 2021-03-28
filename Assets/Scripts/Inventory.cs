@@ -9,6 +9,8 @@ public class Inventory : MonoBehaviour
 
     void Awake ()
     {
+        var items = Resources.LoadAll("Recipes", typeof(Item));
+
         if(instance != null)
         {
             Debug.LogWarning("More than one instance of INventory found!");
@@ -26,7 +28,9 @@ public class Inventory : MonoBehaviour
     public delegate void OnItemChanged();
     public OnItemChanged onItemChangedCallback;
 
-    public void Add (Item item) 
+    #region Add_And_Remove_Items
+    // Backpack Items
+    public void AddToBackpack (Item item) 
     {
         if (backpackItems.Count >= backpackSpace) {
             Debug.Log("Inventory is full!");
@@ -39,11 +43,49 @@ public class Inventory : MonoBehaviour
             onItemChangedCallback.Invoke();
     }
 
-    public void Remove (Item item)
+    public void RemoveFromBackpack (Item item)
     {
         backpackItems.Remove(item);
 
         if(onItemChangedCallback != null)
             onItemChangedCallback.Invoke();
+    }
+
+    // Discovered Items
+    public void AddToDiscoveredItems (Item item) 
+    {
+        if (discoveredItems.Count >= discoverSpace) {
+            Debug.Log("Inventory is full!");
+            return;
+        }
+
+        discoveredItems.Add(item);
+
+        if(onItemChangedCallback != null)
+            onItemChangedCallback.Invoke();
+    }
+
+    public void RemoveFromDiscoveredItems (Item item)
+    {
+        discoveredItems.Remove(item);
+
+        if(onItemChangedCallback != null)
+            onItemChangedCallback.Invoke();
+    }
+    #endregion
+
+    // Add random items here from time to time
+    void Update()
+    {
+        if(Input.GetKeyDown("space"))
+        {
+            var items = Resources.LoadAll("Recipes", typeof(Item));
+            AddToDiscoveredItems((Item)items[0]);
+        }
+    }
+
+    public void RandomItemGenerator()
+    {
+        var items = Resources.LoadAll("Recipes", typeof(Item));
     }
 }

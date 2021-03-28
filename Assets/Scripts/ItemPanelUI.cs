@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,41 +7,57 @@ using TMPro;
 
 public class ItemPanelUI : MonoBehaviour
 {
-    public Transform itemsParent;
-    Inventory inventory;
-    InventorySlot[] slots;
+    public Transform backpackItemsParent;
+    public Transform discoveredItemsParent;
 
-    public Image itemImage;
-    public TextMeshPro itemInformation;
-    public TextMeshPro itemTitle;
+    Inventory inventory;
+    InventorySlot[] discoverySlots;
+    InventorySlot[] backpackSlots;
+
+    [SerializeField] private Image itemImage;
+    [SerializeField] private TextMeshProUGUI itemInformation;
+    [SerializeField] private TextMeshProUGUI itemTitle;
+
+    [SerializeField] private GameObject informationPanel;
 
     void Start()
     {
         inventory = Inventory.instance;
         inventory.onItemChangedCallback += UpdateUI;
 
-        slots = itemsParent.GetComponentsInChildren<InventorySlot>();
+        backpackSlots = backpackItemsParent.GetComponentsInChildren<InventorySlot>();
+        discoverySlots = discoveredItemsParent.GetComponentsInChildren<InventorySlot>();
     }
 
-    public void OpenItem(Item item) 
+    public void OpenItem(InventorySlot slot) 
     {
-        itemImage.sprite = item.itemImage;
-        itemInformation.text = item.itemInformation;
-        itemTitle.text = item.name;
+        itemImage.sprite = slot.item.itemImage;
+        itemInformation.text = slot.item.itemInformation;
+        itemTitle.text = slot.item.name;
+        informationPanel.SetActive(true);
     }
 
     void UpdateUI() 
     {
-        for(int i = 0; i < slots.Length; i++)
+        for(int i = 0; i < discoverySlots.Length; i++)
+        {
+            if (i < inventory.discoveredItems.Count)
+            {
+                discoverySlots[i].AddItem(inventory.discoveredItems[i]);
+            } else {
+                discoverySlots[i].ClearSlot();
+            }
+        }
+
+        for(int i = 0; i < backpackSlots.Length; i++)
         {
             if (i < inventory.backpackItems.Count)
             {
-                slots[i].AddItem(inventory.backpackItems[i]);
+                backpackSlots[i].AddItem(inventory.backpackItems[i]);
             } else {
-                slots[i].ClearSlot();
+                backpackSlots[i].ClearSlot();
             }
         }
         Debug.Log("Updating UI");
     }
-
 }
