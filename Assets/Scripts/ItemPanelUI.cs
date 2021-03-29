@@ -50,6 +50,12 @@ public class ItemPanelUI : MonoBehaviour
         OpenItem(highlightedItemSlot);
     }
 
+    public void DeleteHighlightedItem()
+    {
+        inventory.RemoveFromBackpack(highlightedItemSlot.item);
+        
+    }
+
     public void HighlightItem(InventorySlot slot)
     {
         highlightedItemSlot = slot;
