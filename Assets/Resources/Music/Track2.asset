@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 788e6d616052d9b4b87cb9e028ba6caa, type: 3}
-  m_Name: Track1
+  m_Name: Track2
   m_EditorClassIdentifier: 
-  name: "M\xD8"
-  icon: {fileID: 3286163911610860551, guid: 24b0229798d0a0542968e6194dc831f8, type: 3}
-  itemInformation: "Did you know that M\xD8 comes from Denmark? She made her most
-    popular track 'Lean On' with Major Lazer in 2015!"
-  itemImage: {fileID: 21300000, guid: d9915478b7dba6840b9bddce0fd3de92, type: 3}
+  name: Rune RK
+  icon: {fileID: 3286163911610860551, guid: 338afb782e83eb2449bf09e51d8d5f56, type: 3}
+  itemInformation: Did you know that DJ and producer Rune RK comes from Denmark?
+    His greatest hit altum is called 'Calabria'!
+  itemImage: {fileID: 21300000, guid: cfc22ee26e768484e984c09a1bb14737, type: 3}
