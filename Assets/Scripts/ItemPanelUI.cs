@@ -53,7 +53,8 @@ public class ItemPanelUI : MonoBehaviour
     public void DeleteHighlightedItem()
     {
         inventory.RemoveFromBackpack(highlightedItemSlot.item);
-        
+        highlightedItemIcon.sprite = null;
+        highlightedItemSlot = null;
     }
 
     public void HighlightItem(InventorySlot slot)
