@@ -6,8 +6,9 @@ using UnityEngine.UI;
 
 public class InformationPanelManager : MonoBehaviour
 {
-    public GameObject informationPanel;
-    public GameObject interactablesPanel;
+    [SerializeField] private GameObject informationPanel;
+    [SerializeField] private GameObject interactablesPanel;
+    [SerializeField] private GameObject messageBox;
 
     Item displayedItem;
     Inventory inventory;
@@ -31,6 +32,7 @@ public class InformationPanelManager : MonoBehaviour
         if(displayedItem != null)
         {
             inventory.AddToBackpack(displayedItem);
+            informationPanel.SetActive(false);
         }
         else
         {
@@ -42,9 +44,48 @@ public class InformationPanelManager : MonoBehaviour
         // 2. Disable buttons
     } 
 
-    public void DeleteItem(Item displayedItem)
+    public void DeleteItemFromDiscoveredItems()
     {
         // Delete from item panel and close window
+        if(displayedItem != null)
+        {
+            inventory.RemoveFromDiscoveredItems(displayedItem);
+            informationPanel.SetActive(false);
+        }
+        else
+        {
+            Debug.Log("There is no item to delete!");
+        }
+    }
+
+    public void DeleteItemFromBackpack()
+    {
+        // Delete from item panel and close window
+        if(displayedItem != null)
+        {
+            inventory.RemoveFromBackpack(displayedItem);
+            informationPanel.SetActive(false);
+            CloseMessageBox();
+        }
+        else
+        {
+            Debug.Log("There is no item to delete!");
+        }
+    }
+
+    public void OpenMessageBox()
+    {
+        messageBox.SetActive(true);
+    }
+
+    public void CloseMessageBox()
+    {
+        messageBox.SetActive(false);
+    }
+
+    public void CloseInformationPanel()
+    {
+        gameObject.SetActive(false);
     }
 
     public void SetItem(Item item)

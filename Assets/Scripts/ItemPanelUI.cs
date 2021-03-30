@@ -18,6 +18,7 @@ public class ItemPanelUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI itemInformation;
     [SerializeField] private TextMeshProUGUI itemTitle;
 
+    [SerializeField] private GameObject messageBox;
     [SerializeField] private GameObject informationPanel;
     private InformationPanelManager panelScript;
 
@@ -37,12 +38,15 @@ public class ItemPanelUI : MonoBehaviour
 
     public void OpenItem(InventorySlot slot) 
     {
-        itemImage.sprite = slot.item.itemImage;
-        itemInformation.text = slot.item.itemInformation;
-        itemTitle.text = slot.item.name;
-        panelScript.SetItem(slot.item);
-        informationPanel.SetActive(true);
-        inventory.RemoveFromDiscoveredItems(slot.item);
+        if(slot != null)
+        {
+            itemImage.sprite = slot.item.itemImage;
+            itemInformation.text = slot.item.itemInformation;
+            itemTitle.text = slot.item.name;
+            panelScript.SetItem(slot.item);
+            informationPanel.SetActive(true);
+            inventory.RemoveFromDiscoveredItems(slot.item);
+        }
     }
 
     public void OpenHighlightedItem()
@@ -52,15 +56,28 @@ public class ItemPanelUI : MonoBehaviour
 
     public void DeleteHighlightedItem()
     {
-        inventory.RemoveFromBackpack(highlightedItemSlot.item);
-        highlightedItemIcon.sprite = null;
-        highlightedItemSlot = null;
+        if(highlightedItemSlot != null)
+        {
+            inventory.RemoveFromBackpack(highlightedItemSlot.item);
+            highlightedItemIcon.sprite = null;
+            highlightedItemSlot = null;
+        }
     }
 
     public void HighlightItem(InventorySlot slot)
     {
         highlightedItemSlot = slot;
         highlightedItemIcon.sprite = slot.item.icon;
+    }
+
+    public void OpenMessageBox()
+    {
+        messageBox.SetActive(true);
+    }
+
+    public void CloseMessageBox()
+    {
+        messageBox.SetActive(false);
     }
 
     void UpdateUI() 
