@@ -80,27 +80,32 @@ public class ItemPanelUI : MonoBehaviour
         messageBox.SetActive(false);
     }
 
-    void UpdateUI() 
+    public void UpdateUI() 
     {
-        for(int i = 0; i < discoverySlots.Length; i++)
+        if(discoverySlots != null)
         {
-            if (i < inventory.discoveredItems.Count)
+            for(int i = 0; i < discoverySlots.Length; i++)
             {
-                discoverySlots[i].AddItem(inventory.discoveredItems[i]);
-            } else {
-                discoverySlots[i].ClearSlot();
+                if (i < inventory.discoveredItems.Count)
+                {
+                    discoverySlots[i].AddItem(inventory.discoveredItems[i]);
+                } else {
+                    discoverySlots[i].ClearSlot();
+                }
             }
         }
 
-        for(int i = 0; i < backpackSlots.Length; i++)
+        if(backpackSlots != null)
         {
-            if (i < inventory.backpackItems.Count)
+            for(int i = 0; i < backpackSlots.Length; i++)
             {
-                backpackSlots[i].AddItem(inventory.backpackItems[i]);
-            } else {
-                backpackSlots[i].ClearSlot();
+                if (i < inventory.backpackItems.Count)
+                {
+                    backpackSlots[i].AddItem(inventory.backpackItems[i]);
+                } else {
+                    backpackSlots[i].ClearSlot();
+                }
             }
         }
-        Debug.Log("Updating UI");
     }
 }
