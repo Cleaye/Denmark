@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>vote</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Notification-grandma" transform="translate(-148.000000, -201.000000)">
+            <g id="vote" transform="translate(148.000000, 201.000000)">
+                <circle id="Oval" fill="#50B4A3" cx="32" cy="32" r="32"></circle>
+                <path d="M22.8848102,49.5576865 L14.9169779,39.8697746 C13.518216,38.1690104 13.7453492,35.6420293 15.4231063,34.2251094 L15.4234849,34.2247258 C17.1019992,32.8078059 19.5959216,33.0375663 20.9939264,34.7383305 L25.7137541,40.4769712 L42.8471677,16.6482447 C44.1334986,14.8592586 46.6077362,14.4653288 48.3733182,15.768711 C50.1389002,17.0720932 50.5276765,19.5791285 49.2413455,21.367731 L29.1203734,49.3520912 C27.6035022,51.4617445 24.5337971,51.5626243 22.8848102,49.5576865 Z" id="Path" fill="#FFFFFF"></path>
+            </g>
+        </g>
+    </g>
+</svg>

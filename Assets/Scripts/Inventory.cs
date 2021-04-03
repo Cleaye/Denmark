@@ -6,6 +6,7 @@ public class Inventory : MonoBehaviour
 {
     #region Singleton
     public static Inventory instance;
+    Item swappableItem;
 
     void Awake ()
     {
@@ -13,7 +14,7 @@ public class Inventory : MonoBehaviour
 
         if(instance != null)
         {
-            Debug.LogWarning("More than one instance of INventory found!");
+            Debug.LogWarning("More than one instance of Inventory found!");
             return;
         }
 
@@ -28,20 +29,20 @@ public class Inventory : MonoBehaviour
     public delegate void OnItemChanged();
     public OnItemChanged onItemChangedCallback;
 
-    #region Add_And_Remove_Items
+    #region Add__Remove_Swap_Items
     // Backpack Items
-    public void AddToBackpack (Item item) 
+    public bool AddToBackpack (Item item) 
     {
         if (backpackItems.Count >= backpackSpace) {
-            Debug.Log("Inventory is full!");
-            return;
+            return false;
         }
 
         backpackItems.Add(item);
-        Debug.Log("Succesfully added item!");
 
         if(onItemChangedCallback != null)
             onItemChangedCallback.Invoke();
+
+        return true;
     }
 
     public void RemoveFromBackpack (Item item)
@@ -55,10 +56,8 @@ public class Inventory : MonoBehaviour
     // Discovered Items
     public void AddToDiscoveredItems (Item item) 
     {
-        if (discoveredItems.Count >= discoverSpace) {
-            Debug.Log("Inventory is full!");
+        if (discoveredItems.Count >= discoverSpace) 
             return;
-        }
 
         discoveredItems.Add(item);
 
@@ -72,6 +71,23 @@ public class Inventory : MonoBehaviour
 
         if(onItemChangedCallback != null)
             onItemChangedCallback.Invoke();
+    }
+
+    public void SetSwapItem(Item item)
+    {
+        swappableItem = item;
+    }
+
+    public bool SwapItemsInBackpack(Item itemToSwap)
+    {
+        int index = backpackItems.IndexOf(itemToSwap);
+        if(index != -1 && swappableItem != null)
+        {
+            backpackItems[index] = swappableItem;
+            return true;
+        }
+        
+        return false;
     }
     #endregion
 

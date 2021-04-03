@@ -8,7 +8,6 @@ public class InventorySlot : MonoBehaviour
     public Item item; 
 
     private void Start() {
-        button.interactable = false;
     }
 
     public void AddItem(Item newItem) 

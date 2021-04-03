@@ -9,6 +9,10 @@ public class InformationPanelManager : MonoBehaviour
     [SerializeField] private GameObject informationPanel;
     [SerializeField] private GameObject interactablesPanel;
     [SerializeField] private GameObject messageBox;
+    [SerializeField] private GameObject backpackMessage;
+    [SerializeField] private GameObject interactionButtons;
+    [SerializeField] private GameObject linkButtons;
+    [SerializeField] private GameObject swapInventory;
 
     Item displayedItem;
     Inventory inventory;
@@ -23,7 +27,9 @@ public class InformationPanelManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             interactablesPanel.SetActive(true);
+            interactionButtons.SetActive(true);
             informationPanel.SetActive(false);
+            linkButtons.SetActive(false);
         }
     }
 
@@ -31,17 +37,11 @@ public class InformationPanelManager : MonoBehaviour
     {
         if(displayedItem != null)
         {
-            inventory.AddToBackpack(displayedItem);
-            informationPanel.SetActive(false);
+            if(inventory.AddToBackpack(displayedItem))
+                backpackMessage.SetActive(true);
+            else
+                swapInventory.SetActive(true);
         }
-        else
-        {
-            Debug.Log("There is no item to add!");
-        }
-        
-        // TODO: 
-        // 1. Show succesfull add item message
-        // 2. Disable buttons
     } 
 
     public void DeleteItemFromDiscoveredItems()
@@ -73,6 +73,16 @@ public class InformationPanelManager : MonoBehaviour
         }
     }
 
+    public void SetSwapItemInInventory()
+    {
+        inventory.SetSwapItem(displayedItem);
+    }
+
+    public void OpenLink()
+    {
+        Application.OpenURL(displayedItem.link);
+    }
+
     public void OpenMessageBox()
     {
         messageBox.SetActive(true);
@@ -85,6 +95,8 @@ public class InformationPanelManager : MonoBehaviour
 
     public void CloseInformationPanel()
     {
+        messageBox.SetActive(false);
+        backpackMessage.SetActive(false);
         gameObject.SetActive(false);
     }
 

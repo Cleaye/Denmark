@@ -20,9 +20,13 @@ public class ItemPanelUI : MonoBehaviour
 
     [SerializeField] private GameObject messageBox;
     [SerializeField] private GameObject informationPanel;
+    [SerializeField] private GameObject interactionButtons;
+    [SerializeField] private GameObject linkButton;
+
     private InformationPanelManager panelScript;
 
     [SerializeField] private SpriteRenderer highlightedItemIcon;
+    
     InventorySlot highlightedItemSlot;
 
     void Start()
@@ -51,6 +55,10 @@ public class ItemPanelUI : MonoBehaviour
 
     public void OpenHighlightedItem()
     {
+        interactionButtons.SetActive(false);
+        if(highlightedItemSlot.item.link != "")
+            linkButton.SetActive(true);
+
         OpenItem(highlightedItemSlot);
     }
 
@@ -70,14 +78,23 @@ public class ItemPanelUI : MonoBehaviour
         highlightedItemIcon.sprite = slot.item.icon;
     }
 
-    public void OpenMessageBox()
+    public void OpenMessageBox(GameObject messageBox)
     {
-        messageBox.SetActive(true);
+        if(highlightedItemSlot != null)
+            messageBox.SetActive(true);
     }
 
-    public void CloseMessageBox()
+    public void CloseMessageBox(GameObject messageBox)
     {
         messageBox.SetActive(false);
+    }
+    
+    public void SwapItems(GameObject messageBox)
+    {
+        if(inventory.SwapItemsInBackpack(highlightedItemSlot.item))
+        {
+            messageBox.SetActive(true);
+        }
     }
 
     public void UpdateUI() 
