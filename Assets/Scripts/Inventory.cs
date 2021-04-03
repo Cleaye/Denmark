@@ -9,6 +9,8 @@ public class Inventory : MonoBehaviour
     public static Inventory instance;
     public ItemDatabase database;
     public PlayerInventory playerInventory;
+    
+    List<int> usedItems = new List<int>();
     Item swappableItem;
 
     void Awake ()
@@ -107,13 +109,36 @@ public class Inventory : MonoBehaviour
     {
         if(Input.GetKeyDown("space"))
         {
-            var items = Resources.LoadAll("Recipes", typeof(Item));
-            AddToDiscoveredItems((Item)items[0]);
+            Item randomItem = RandomItemGenerator();
+            AddToDiscoveredItems(randomItem);
         }
     }
 
-    public void RandomItemGenerator()
+    public Item RandomItemGenerator()
     {
-        var items = Resources.LoadAll("Recipes", typeof(Item));
+        List<int> availableItems = new List<int>();
+
+        foreach(Item item in backpackItems)
+        {
+            if(!usedItems.Contains(database.GetId[item]))
+                usedItems.Add(database.GetId[item]);
+        }
+
+        foreach(Item item in discoveredItems)
+        {
+            if(!usedItems.Contains(database.GetId[item]))
+                usedItems.Add(database.GetId[item]);
+        }
+
+        for(int i = 0; i < database.Items.Length; i++)
+        {
+            if(usedItems.Contains(i))
+                continue;
+            else
+                availableItems.Add(i);
+        }
+
+        int randomNumber = Random.Range(0, availableItems.Count);
+        return database.GetItem[randomNumber];
     }
 }
