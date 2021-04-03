@@ -38,6 +38,7 @@ public class ItemPanelUI : MonoBehaviour
         discoverySlots = discoveredItemsParent.GetComponentsInChildren<InventorySlot>();
 
         panelScript = informationPanel.GetComponent<InformationPanelManager>();
+        UpdateUI();
     }
 
     public void OpenItem(InventorySlot slot) 

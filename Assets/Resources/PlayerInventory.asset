@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 788e6d616052d9b4b87cb9e028ba6caa, type: 3}
-  m_Name: New Item
+  m_Script: {fileID: 11500000, guid: 907e4f6c04711e04cb3a17f91e8517a7, type: 3}
+  m_Name: PlayerInventory
   m_EditorClassIdentifier: 
-  name: New Item
-  icon: {fileID: 0}
-  itemInformation: Information
-  itemImage: {fileID: 0}
-  link: 
+  backpackInventory: []
+  discoverInventory: []
+  database: {fileID: 0}

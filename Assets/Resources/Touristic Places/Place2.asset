@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788e6d616052d9b4b87cb9e028ba6caa, type: 3}
+  m_Name: Place2
+  m_EditorClassIdentifier: 
+  id: 7
+  name: Tivoli Gardens
+  icon: {fileID: 3286163911610860551, guid: a7c0f072112b2364fbe1422ac897c1ca, type: 3}
+  itemInformation: Tivoli Gardens is one of the oldest and well-known amusement parks.
+    It opened its doors in 1843 and still has a wooden roller coaster. The Tivoli
+    Gardens are a real fairytale, with lush gardens, and a magical amusement park
+    set in the heart of the city. No wonder Walt Disney traveled there for inspiration!
+  itemImage: {fileID: 21300000, guid: cbf5c6287e2bf0f49b64afecf617c7b3, type: 3}
+  link: 

@@ -1,16 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class Inventory : MonoBehaviour
 {
     #region Singleton
     public static Inventory instance;
+    public ItemDatabase database;
+    public PlayerInventory playerInventory;
     Item swappableItem;
 
     void Awake ()
     {
         var items = Resources.LoadAll("Recipes", typeof(Item));
+        if(playerInventory.Load())
+        {
+            backpackItems = playerInventory.GetBackpackItemsFromDatabase();
+            discoveredItems = playerInventory.GetDiscoverItemsFromDatabase();
+        }
 
         if(instance != null)
         {
@@ -33,11 +41,12 @@ public class Inventory : MonoBehaviour
     // Backpack Items
     public bool AddToBackpack (Item item) 
     {
-        if (backpackItems.Count >= backpackSpace) {
+        if (backpackItems.Count >= backpackSpace) 
             return false;
-        }
 
         backpackItems.Add(item);
+        playerInventory.UpdateBackpackInventory(backpackItems);
+        playerInventory.Save();
 
         if(onItemChangedCallback != null)
             onItemChangedCallback.Invoke();
@@ -60,6 +69,8 @@ public class Inventory : MonoBehaviour
             return;
 
         discoveredItems.Add(item);
+        playerInventory.UpdateDiscoverInventory(discoveredItems);
+        playerInventory.Save();
 
         if(onItemChangedCallback != null)
             onItemChangedCallback.Invoke();

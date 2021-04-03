@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788e6d616052d9b4b87cb9e028ba6caa, type: 3}
+  m_Name: FunFact2
+  m_EditorClassIdentifier: 
+  id: 1
+  name: Google Maps
+  icon: {fileID: 3286163911610860551, guid: 58d93a7dc8f031b49891f528ecab1124, type: 3}
+  itemInformation: Did you know that an initial map of Google Maps was built by two
+    Danish brothers?
+  itemImage: {fileID: 21300000, guid: 1e7cba0918e7f5742823cba13f63d164, type: 3}
+  link: 
