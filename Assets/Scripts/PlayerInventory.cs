@@ -10,6 +10,9 @@ public class PlayerInventory : ScriptableObject, ISerializationCallbackReceiver
 {
     private string savePath = "/inventory.Save";
 
+
+    public bool recipePostCard = false;
+    public bool gardenPostCard = false;
     public List<Item> backpackInventory;
     public List<Item> discoverInventory;
     public ItemDatabase database;
@@ -67,6 +70,26 @@ public class PlayerInventory : ScriptableObject, ISerializationCallbackReceiver
     public List<Item> GetDiscoverItemsFromDatabase()
     {
         return discoverInventory;
+    }
+
+    public bool HasRecipePostcard()
+    {
+        return recipePostCard;
+    }
+
+    public bool HasGardenPostcard()
+    {
+        return gardenPostCard;
+    }
+
+    public void ReceiveRecipePostcard(bool receiveStatus)
+    {
+        recipePostCard = receiveStatus;
+    }
+
+    public void ReceiveGardenPostcard(bool receiveStatus)
+    {
+        gardenPostCard = receiveStatus;
     }
 
 }

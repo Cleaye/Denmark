@@ -9,6 +9,9 @@ public class Inventory : MonoBehaviour
     public static Inventory instance;
     public ItemDatabase database;
     public PlayerInventory playerInventory;
+
+    public bool hasRecipeCard = false;
+    public bool hasGardenCard = false;
     
     List<int> usedItems = new List<int>();
     Item swappableItem;
@@ -20,6 +23,8 @@ public class Inventory : MonoBehaviour
         {
             backpackItems = playerInventory.GetBackpackItemsFromDatabase();
             discoveredItems = playerInventory.GetDiscoverItemsFromDatabase();
+            hasRecipeCard = playerInventory.HasRecipePostcard();
+            hasGardenCard = playerInventory.HasGardenPostcard();
         }
 
         if(instance != null)
@@ -59,6 +64,7 @@ public class Inventory : MonoBehaviour
     public void RemoveFromBackpack (Item item)
     {
         backpackItems.Remove(item);
+        playerInventory.Save();
 
         if(onItemChangedCallback != null)
             onItemChangedCallback.Invoke();
@@ -81,6 +87,7 @@ public class Inventory : MonoBehaviour
     public void RemoveFromDiscoveredItems (Item item)
     {
         discoveredItems.Remove(item);
+        playerInventory.Save();
 
         if(onItemChangedCallback != null)
             onItemChangedCallback.Invoke();
@@ -89,6 +96,7 @@ public class Inventory : MonoBehaviour
     public void SetSwapItem(Item item)
     {
         swappableItem = item;
+        playerInventory.Save();
     }
 
     public bool SwapItemsInBackpack(Item itemToSwap)
@@ -97,12 +105,27 @@ public class Inventory : MonoBehaviour
         if(index != -1 && swappableItem != null)
         {
             backpackItems[index] = swappableItem;
+            playerInventory.Save();
             return true;
         }
         
         return false;
     }
     #endregion
+
+    public void ReceiveRecipePostcard()
+    {
+        hasRecipeCard = true;
+        playerInventory.ReceiveRecipePostcard(true);
+        playerInventory.Save();
+    }
+
+    public void ReceiveGardenPostcard()
+    {
+        hasGardenCard = true;
+        playerInventory.ReceiveGardenPostcard(true);
+        playerInventory.Save();
+    }
 
     // Add random items here from time to time
     void Update()
@@ -112,6 +135,11 @@ public class Inventory : MonoBehaviour
             Item randomItem = RandomItemGenerator();
             AddToDiscoveredItems(randomItem);
         }
+
+        // Reset
+        if(Input.GetKeyDown("1"))
+            Reset();
+
     }
 
     public Item RandomItemGenerator()
@@ -140,5 +168,23 @@ public class Inventory : MonoBehaviour
 
         int randomNumber = Random.Range(0, availableItems.Count);
         return database.GetItem[randomNumber];
+    }
+
+    public void Reset()
+    {
+        backpackItems = new List<Item>();
+        discoveredItems = new List<Item>();
+        playerInventory.UpdateBackpackInventory(backpackItems);
+        playerInventory.UpdateDiscoverInventory(discoveredItems);
+
+        hasRecipeCard = false;
+        hasGardenCard = false;
+
+        playerInventory.ReceiveRecipePostcard(false);
+        playerInventory.ReceiveGardenPostcard(false);
+
+        onItemChangedCallback.Invoke();
+        
+        playerInventory.Save();
     }
 }

@@ -23,6 +23,9 @@ public class ItemPanelUI : MonoBehaviour
     [SerializeField] private GameObject interactionButtons;
     [SerializeField] private GameObject linkButton;
 
+    [SerializeField] private GameObject recipePostcard;
+    [SerializeField] private GameObject gardenPostcard;
+
     private InformationPanelManager panelScript;
 
     [SerializeField] private SpriteRenderer highlightedItemIcon;
@@ -33,6 +36,12 @@ public class ItemPanelUI : MonoBehaviour
     {
         inventory = Inventory.instance;
         inventory.onItemChangedCallback += UpdateUI;
+
+        if(inventory.hasRecipeCard)
+            recipePostcard.SetActive(true);
+
+        if(inventory.hasGardenCard)
+            gardenPostcard.SetActive(true);
 
         backpackSlots = backpackItemsParent.GetComponentsInChildren<InventorySlot>();
         discoverySlots = discoveredItemsParent.GetComponentsInChildren<InventorySlot>();
@@ -73,10 +82,32 @@ public class ItemPanelUI : MonoBehaviour
         }
     }
 
+    public void SendHighlightedItem()
+    {
+        if(highlightedItemSlot != null)
+        {
+            if(highlightedItemSlot.item.name.Contains("Recipe"))
+                inventory.ReceiveRecipePostcard();
+            else if(highlightedItemSlot.item.name.Contains("Gardens"))
+                inventory.ReceiveGardenPostcard();
+            
+            inventory.RemoveFromBackpack(highlightedItemSlot.item);
+            highlightedItemIcon.sprite = null;
+            highlightedItemSlot = null;
+        }
+    }
+
     public void HighlightItem(InventorySlot slot)
     {
         highlightedItemSlot = slot;
         highlightedItemIcon.sprite = slot.item.icon;
+    }
+
+    
+    public void ClearHighlightedItem()
+    {
+        highlightedItemSlot = null;
+        highlightedItemIcon.sprite = null;
     }
 
     public void OpenMessageBox(GameObject messageBox)
@@ -94,9 +125,11 @@ public class ItemPanelUI : MonoBehaviour
     {
         if(inventory.SwapItemsInBackpack(highlightedItemSlot.item))
         {
+            ClearHighlightedItem();
             messageBox.SetActive(true);
         }
     }
+
 
     public void UpdateUI() 
     {
@@ -125,5 +158,10 @@ public class ItemPanelUI : MonoBehaviour
                 }
             }
         }
+
+        if(inventory.hasRecipeCard)
+            recipePostcard.SetActive(true);
+        if(inventory.hasGardenCard)
+            gardenPostcard.SetActive(true);
     }
 }
