@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 788e6d616052d9b4b87cb9e028ba6caa, type: 3}
   m_Name: FunFact3
   m_EditorClassIdentifier: 
-  id: 0
+  id: 11
   name: Carlsberg
   icon: {fileID: 3286163911610860551, guid: fefba52ceed7e574d874795d1ad76dba, type: 3}
   itemInformation: Carlsberg Carlsberg is one of the most known brands among beer

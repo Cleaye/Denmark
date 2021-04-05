@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 788e6d616052d9b4b87cb9e028ba6caa, type: 3}
   m_Name: Recipe3
   m_EditorClassIdentifier: 
-  id: 0
+  id: 10
   name: Frikadeller
   icon: {fileID: 3286163911610860551, guid: c85746c99bf4805469dbbb6847ea3437, type: 3}
   itemInformation: This savory pork meatball is a favorite in Denmark. It is often
     served with brown sauce, potatoes, and cabbage.
   itemImage: {fileID: 21300000, guid: b9d645fe5a8a4e3438e8a20fea11a823, type: 3}
-  link: 
+  link: https://www.allrecipes.com/recipe/111291/frikadeller-danish-meatballs/

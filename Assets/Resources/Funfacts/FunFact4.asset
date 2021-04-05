@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 788e6d616052d9b4b87cb9e028ba6caa, type: 3}
   m_Name: FunFact4
   m_EditorClassIdentifier: 
-  id: 0
-  name: Oldest flag
-  icon: {fileID: 3286163911610860551, guid: 58d93a7dc8f031b49891f528ecab1124, type: 3}
+  id: 12
+  name: Oldest Flag
+  icon: {fileID: 3286163911610860551, guid: fefba52ceed7e574d874795d1ad76dba, type: 3}
   itemInformation: 'First acknowledged in 1219, the Danish flag "Dannebrog" remains
     the oldest state flag in the world still in use by an independent nation. Turning
     800 years has never looked better - and we''ll celebrate it in true Danish birthday
