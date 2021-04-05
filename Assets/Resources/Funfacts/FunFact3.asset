@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788e6d616052d9b4b87cb9e028ba6caa, type: 3}
+  m_Name: FunFact3
+  m_EditorClassIdentifier: 
+  id: 0
+  name: Carlsberg
+  icon: {fileID: 3286163911610860551, guid: 58d93a7dc8f031b49891f528ecab1124, type: 3}
+  itemInformation: Carlsberg Carlsberg is one of the most known brands among beer
+    geeks around the world. This world-famous brewery was founded in 1847 by Jacob
+    Jacobsen and started to export its beers in 1868 and the headquarter is located
+    in Copenhagen where you today can visit a very interesting Carlsberg museum about
+    the brewery and their beers.
+  itemImage: {fileID: 21300000, guid: f7199383901286c4dab9dbb1a02b8cf5, type: 3}
+  link: 
