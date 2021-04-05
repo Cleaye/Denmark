@@ -11,6 +11,7 @@ public class TabButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
 {
     public TabGroup tabGroup;
     public GameObject newPostcardIcon;
+    Inventory inventory;
 
     public Image background;
     public TextMeshProUGUI buttonText;
@@ -19,6 +20,7 @@ public class TabButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
     {
         tabGroup.OnTabSelected(this);
         newPostcardIcon.SetActive(false);
+        inventory.newCard = false;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -34,6 +36,7 @@ public class TabButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
     // Start is called before the first frame update
     void Start()
     {
+        inventory = Inventory.instance;
         background = GetComponent<Image>();
         tabGroup.Subscribe(this);
     }

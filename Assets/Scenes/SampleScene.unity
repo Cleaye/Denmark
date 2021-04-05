@@ -15578,6 +15578,7 @@ MonoBehaviour:
   hasMusicCard: 0
   hasLegoCard: 0
   newCard: 0
+  date: 
   backpackItems: []
   discoveredItems: []
   backpackSpace: 6
@@ -21556,9 +21557,9 @@ MonoBehaviour:
   linkButton: {fileID: 1153157438}
   recipePostcard: {fileID: 862322191}
   gardenPostcard: {fileID: 2047540592}
-  musicPostcard: {fileID: 4730138}
+  musicPostcard: {fileID: 1319026085}
   factPostcard: {fileID: 1455659633}
-  legoPostcard: {fileID: 1319026085}
+  legoPostcard: {fileID: 4730138}
   newPostcardIcon: {fileID: 793916956}
   highlightedItemIcon: {fileID: 1997946572}
 --- !u!212 &1997946572 stripped
