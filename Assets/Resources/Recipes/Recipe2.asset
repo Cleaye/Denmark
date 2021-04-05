@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788e6d616052d9b4b87cb9e028ba6caa, type: 3}
+  m_Name: Recipe2
+  m_EditorClassIdentifier: 
+  id: 9
+  name: "P\xF8lser"
+  icon: {fileID: 3286163911610860551, guid: c85746c99bf4805469dbbb6847ea3437, type: 3}
+  itemInformation: "P\xF8lser is the ultimate street food and is known as a kind
+    of gourmet hot dog. It is made with a red sausage, bun, and various toppings.
+    If you can\u2019t go to Denmark to get one, try making one in your own home. "
+  itemImage: {fileID: 21300000, guid: 2fff3dcb2259a1f4b8ece8ba01d07c8f, type: 3}
+  link: 
