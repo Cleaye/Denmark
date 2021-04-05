@@ -20,6 +20,11 @@ public class PlayerInventory : ScriptableObject, ISerializationCallbackReceiver
     public List<Item> discoverInventory;
     public ItemDatabase database;
 
+    public List<int> lastOpenedDate;
+    bool receivedFirst;
+    bool receivedSecond;
+    bool receivedThird;
+
     public void Save()
     {
         string saveData = JsonUtility.ToJson(this, true);
@@ -133,5 +138,50 @@ public class PlayerInventory : ScriptableObject, ISerializationCallbackReceiver
     public void ReceiveNewcard(bool receiveStatus)
     {
         newCard = receiveStatus;
+    }
+
+    public void UpdateTime(List<int> date)
+    {
+        lastOpenedDate = date;
+    }
+
+    public void ResetTime()
+    {
+        lastOpenedDate = new List<int>();
+    }
+
+    public void UpdateFirst(bool update)
+    {
+        receivedFirst = update;
+    }
+
+    public void UpdateSecond(bool update)
+    {
+        receivedSecond = update;
+    }
+
+    public void UpdateThird(bool update)
+    {
+        receivedThird = update;
+    }
+
+    public List<int> GetLastTime()
+    {
+        return lastOpenedDate;
+    }
+
+    public bool GetFirst()
+    {
+        return receivedFirst;
+    }
+
+    public bool GetSecond()
+    {
+        return receivedSecond;
+    }
+
+    public bool GetThird()
+    {
+        return receivedThird;
     }
 }

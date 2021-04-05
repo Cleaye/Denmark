@@ -17,6 +17,8 @@ public class Inventory : MonoBehaviour
     public bool hasLegoCard = false;
     public bool newCard = false;
 
+    public List<int> date;
+
     Item swappableItem;
 
     void Awake ()
@@ -177,16 +179,60 @@ public class Inventory : MonoBehaviour
     // Add random items here from time to time
     void Update()
     {
-        if(Input.GetKeyDown("space"))
+        List<int> tempTime = new List<int>();
+        var time = System.DateTime.Now;
+        tempTime.Add(time.Year);
+        tempTime.Add(time.Month);
+        tempTime.Add(time.Day);
+        tempTime.Add(time.Hour);
+
+        List<int> lastPlayed = playerInventory.GetLastTime();
+
+        // New day, so reset items
+        if(lastPlayed.Count != 0 && lastPlayed[2] > tempTime[2])
         {
-            Item randomItem = RandomItemGenerator();
-            AddToDiscoveredItems(randomItem);
+            playerInventory.UpdateFirst(false);
+            playerInventory.UpdateSecond(false);
+            playerInventory.UpdateThird(false);
+            playerInventory.UpdateTime(tempTime);
         }
+
+        // Player playing for the first time
+        if(lastPlayed.Count == 0)
+        {
+            AddToDiscoveredItems(RandomItemGenerator());
+            playerInventory.UpdateTime(tempTime);
+            playerInventory.UpdateFirst(true);
+            playerInventory.Save();
+        }
+
+        // First item of the day
+        if(!playerInventory.GetFirst())
+        {
+            AddToDiscoveredItems(RandomItemGenerator());
+            playerInventory.UpdateFirst(true);
+            playerInventory.Save();
+        }
+
+        if(!playerInventory.GetSecond() && tempTime[3] > 12)
+        {
+            AddToDiscoveredItems(RandomItemGenerator());
+            playerInventory.UpdateSecond(true);
+            playerInventory.Save();
+        }
+
+        if(!playerInventory.GetThird() && tempTime[3] > 18) {
+            AddToDiscoveredItems(RandomItemGenerator());
+            playerInventory.UpdateThird(true);
+            playerInventory.Save();
+        }
+
+        if(Input.GetKeyDown("space"))
+            AddToDiscoveredItems(RandomItemGenerator());
 
         // Reset
         if(Input.GetKeyDown("1"))
             Reset();
-
     }
 
     public Item RandomItemGenerator()
@@ -237,6 +283,11 @@ public class Inventory : MonoBehaviour
         playerInventory.ReceiveFactPostcard(false);
         playerInventory.ReceiveLegoPostcard(false);
         playerInventory.ReceiveNewcard(false);
+
+        playerInventory.UpdateFirst(false);
+        playerInventory.UpdateSecond(false);
+        playerInventory.UpdateThird(false);
+        playerInventory.ResetTime();
 
         onItemChangedCallback.Invoke();
         
