@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 58d93a7dc8f031b49891f528ecab1124
+guid: be9d48ba867666d41bba5b1e80f32dff
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -10,12 +10,12 @@ ScriptedImporter:
   script: {fileID: 11500000, guid: a57477913897c46af95d590f580878bd, type: 3}
   svgType: 0
   texturedSpriteMeshType: 0
-  svgPixelsPerUnit: 150
+  svgPixelsPerUnit: 100
   gradientResolution: 64
   alignment: 0
   customPivot: {x: 0, y: 0}
   generatePhysicsShape: 0
-  viewportOptions: 1
+  viewportOptions: 0
   preserveViewport: 0
   advancedMode: 0
   predefinedResolutionIndex: 1
@@ -39,17 +39,17 @@ ScriptedImporter:
   spriteData:
     TessellationDetail: 0
     SpriteRect:
-      name: post-itSprite
+      name: 
       originalName: 
-      pivot: {x: 0.49996632, y: 0.50035495}
+      pivot: {x: 0, y: 0}
       alignment: 0
-      border: {x: 1, y: 0, z: 0, w: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 512
-        height: 469
-      spriteID: 1fa3d0d04c118dd448f03d3a865cb205
+        width: 0
+        height: 0
+      spriteID: d971095762486fb49a2ce6d449122fb1
       internalID: 0
     PhysicsOutlines: []

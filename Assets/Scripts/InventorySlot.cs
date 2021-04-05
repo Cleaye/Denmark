@@ -6,6 +6,7 @@ public class InventorySlot : MonoBehaviour
     public GameObject icon; 
     public Button button;
     public Item item; 
+    public GameObject highlight;
 
     private void Start() {
     }

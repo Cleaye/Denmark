@@ -10,9 +10,12 @@ public class PlayerInventory : ScriptableObject, ISerializationCallbackReceiver
 {
     private string savePath = "/inventory.Save";
 
-
     public bool recipePostCard = false;
     public bool gardenPostCard = false;
+    public bool musicPostCard = false;
+    public bool factPostCard = false;
+    public bool legoPostCard = false;
+    public bool newCard = false;
     public List<Item> backpackInventory;
     public List<Item> discoverInventory;
     public ItemDatabase database;
@@ -82,6 +85,26 @@ public class PlayerInventory : ScriptableObject, ISerializationCallbackReceiver
         return gardenPostCard;
     }
 
+    public bool HasMusicPostcard()
+    {
+        return musicPostCard;
+    }
+
+    public bool HasFactPostcard()
+    {
+        return factPostCard;
+    }
+
+    public bool HasLegoPostcard()
+    {
+        return legoPostCard;
+    }
+
+    public bool HasNewPostcard()
+    {
+        return newCard;
+    }
+
     public void ReceiveRecipePostcard(bool receiveStatus)
     {
         recipePostCard = receiveStatus;
@@ -92,4 +115,23 @@ public class PlayerInventory : ScriptableObject, ISerializationCallbackReceiver
         gardenPostCard = receiveStatus;
     }
 
+    public void ReceiveMusicPostcard(bool receiveStatus)
+    {
+        musicPostCard = receiveStatus;
+    }
+
+    public void ReceiveFactPostcard(bool receiveStatus)
+    {
+        factPostCard = receiveStatus;
+    }
+
+    public void ReceiveLegoPostcard(bool receiveStatus)
+    {
+        legoPostCard = receiveStatus;
+    }
+
+    public void ReceiveNewcard(bool receiveStatus)
+    {
+        newCard = receiveStatus;
+    }
 }

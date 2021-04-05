@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   name: Google Maps
-  icon: {fileID: 3286163911610860551, guid: 58d93a7dc8f031b49891f528ecab1124, type: 3}
+  icon: {fileID: 3286163911610860551, guid: fefba52ceed7e574d874795d1ad76dba, type: 3}
   itemInformation: Did you know that an initial map of Google Maps was built by two
     Danish brothers?
   itemImage: {fileID: 21300000, guid: 1e7cba0918e7f5742823cba13f63d164, type: 3}

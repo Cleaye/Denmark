@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 7
   name: Tivoli Gardens
-  icon: {fileID: 3286163911610860551, guid: a7c0f072112b2364fbe1422ac897c1ca, type: 3}
+  icon: {fileID: 3286163911610860551, guid: 9ed414a1fe3bdcd4a811b81da75be8b8, type: 3}
   itemInformation: Tivoli Gardens is one of the oldest and well-known amusement parks.
     It opened its doors in 1843 and still has a wooden roller coaster. The Tivoli
     Gardens are a real fairytale, with lush gardens, and a magical amusement park

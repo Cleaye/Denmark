@@ -25,6 +25,11 @@ public class ItemPanelUI : MonoBehaviour
 
     [SerializeField] private GameObject recipePostcard;
     [SerializeField] private GameObject gardenPostcard;
+    [SerializeField] private GameObject musicPostcard;
+    [SerializeField] private GameObject factPostcard;
+    [SerializeField] private GameObject legoPostcard;
+
+    [SerializeField] private GameObject newPostcardIcon;
 
     private InformationPanelManager panelScript;
 
@@ -42,6 +47,20 @@ public class ItemPanelUI : MonoBehaviour
 
         if(inventory.hasGardenCard)
             gardenPostcard.SetActive(true);
+
+        if(inventory.hasMusicCard)
+            musicPostcard.SetActive(true);
+
+        if(inventory.hasFactCard)
+            factPostcard.SetActive(true);
+
+        if(inventory.hasLegoCard)
+            legoPostcard.SetActive(true);
+
+        if(inventory.newCard)
+            newPostcardIcon.SetActive(true);
+        else
+            newPostcardIcon.SetActive(false);
 
         backpackSlots = backpackItemsParent.GetComponentsInChildren<InventorySlot>();
         discoverySlots = discoveredItemsParent.GetComponentsInChildren<InventorySlot>();
@@ -79,6 +98,7 @@ public class ItemPanelUI : MonoBehaviour
             inventory.RemoveFromBackpack(highlightedItemSlot.item);
             highlightedItemIcon.sprite = null;
             highlightedItemSlot = null;
+            DeselectEveryHighlight();
         }
     }
 
@@ -90,10 +110,17 @@ public class ItemPanelUI : MonoBehaviour
                 inventory.ReceiveRecipePostcard();
             else if(highlightedItemSlot.item.name.Contains("Gardens"))
                 inventory.ReceiveGardenPostcard();
+            else if(highlightedItemSlot.item.name.Contains("Andersen") || highlightedItemSlot.item.name.Contains("Maps"))
+                inventory.ReceiveFactPostcard();
+            else if(highlightedItemSlot.item.name.Contains("MØ") || highlightedItemSlot.item.name.Contains("Rune")  || highlightedItemSlot.item.name.Contains("Corr"))
+                inventory.ReceiveMusicPostcard();
+            else if(highlightedItemSlot.item.name.Contains("LegoLand"))
+                inventory.ReceiveLegoPostcard();
             
             inventory.RemoveFromBackpack(highlightedItemSlot.item);
             highlightedItemIcon.sprite = null;
             highlightedItemSlot = null;
+            DeselectEveryHighlight();
         }
     }
 
@@ -101,9 +128,18 @@ public class ItemPanelUI : MonoBehaviour
     {
         highlightedItemSlot = slot;
         highlightedItemIcon.sprite = slot.item.icon;
+
+        DeselectEveryHighlight();
+
+        slot.highlight.SetActive(true);
     }
 
-    
+    public void DeselectEveryHighlight()
+    {
+        foreach(InventorySlot backpackSlot in backpackSlots)
+            backpackSlot.highlight.SetActive(false);
+    }
+
     public void ClearHighlightedItem()
     {
         highlightedItemSlot = null;
@@ -129,7 +165,6 @@ public class ItemPanelUI : MonoBehaviour
             messageBox.SetActive(true);
         }
     }
-
 
     public void UpdateUI() 
     {
@@ -159,9 +194,30 @@ public class ItemPanelUI : MonoBehaviour
             }
         }
 
+        // Don't update immediately for player release
         if(inventory.hasRecipeCard)
             recipePostcard.SetActive(true);
+        else
+            recipePostcard.SetActive(false);
         if(inventory.hasGardenCard)
             gardenPostcard.SetActive(true);
+        else
+            gardenPostcard.SetActive(false);
+        if(inventory.hasMusicCard)
+            musicPostcard.SetActive(true);
+        else
+            musicPostcard.SetActive(false);
+        if(inventory.hasLegoCard)
+            legoPostcard.SetActive(true);
+        else
+            legoPostcard.SetActive(false);
+        if(inventory.hasFactCard)
+            factPostcard.SetActive(true);
+        else
+            factPostcard.SetActive(false);
+        if(inventory.newCard)
+            newPostcardIcon.SetActive(true);
+        else
+            newPostcardIcon.SetActive(false);
     }
 }

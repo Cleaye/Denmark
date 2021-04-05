@@ -12,19 +12,25 @@ public class Inventory : MonoBehaviour
 
     public bool hasRecipeCard = false;
     public bool hasGardenCard = false;
-    
-    List<int> usedItems = new List<int>();
+    public bool hasFactCard = false;
+    public bool hasMusicCard = false;
+    public bool hasLegoCard = false;
+    public bool newCard = false;
+
     Item swappableItem;
 
     void Awake ()
     {
-        var items = Resources.LoadAll("Recipes", typeof(Item));
         if(playerInventory.Load())
         {
             backpackItems = playerInventory.GetBackpackItemsFromDatabase();
             discoveredItems = playerInventory.GetDiscoverItemsFromDatabase();
             hasRecipeCard = playerInventory.HasRecipePostcard();
             hasGardenCard = playerInventory.HasGardenPostcard();
+            hasMusicCard = playerInventory.HasMusicPostcard();
+            hasFactCard = playerInventory.HasFactPostcard();
+            hasLegoCard = playerInventory.HasLegoPostcard();
+            newCard = playerInventory.HasNewPostcard();
         }
 
         if(instance != null)
@@ -115,16 +121,57 @@ public class Inventory : MonoBehaviour
 
     public void ReceiveRecipePostcard()
     {
-        hasRecipeCard = true;
-        playerInventory.ReceiveRecipePostcard(true);
-        playerInventory.Save();
+        if(!playerInventory.HasRecipePostcard())
+        {
+            hasRecipeCard = true;
+            playerInventory.ReceiveRecipePostcard(true);
+            playerInventory.ReceiveNewcard(true);
+            playerInventory.Save();
+        }
     }
 
     public void ReceiveGardenPostcard()
     {
-        hasGardenCard = true;
-        playerInventory.ReceiveGardenPostcard(true);
-        playerInventory.Save();
+        if(!playerInventory.HasGardenPostcard())
+        {
+            hasGardenCard = true;
+            playerInventory.ReceiveGardenPostcard(true);
+            playerInventory.ReceiveNewcard(true);
+            playerInventory.Save();
+        }
+    }
+
+    public void ReceiveMusicPostcard()
+    {
+        if(!playerInventory.HasMusicPostcard())
+        {
+            hasMusicCard = true;
+            playerInventory.ReceiveMusicPostcard(true);
+            playerInventory.ReceiveNewcard(true);
+            playerInventory.Save();
+        }
+    }
+
+    public void ReceiveFactPostcard()
+    {
+        if(!playerInventory.HasFactPostcard())
+        {
+            hasFactCard = true;
+            playerInventory.ReceiveFactPostcard(true);
+            playerInventory.ReceiveNewcard(true);
+            playerInventory.Save();
+        }
+    }
+
+    public void ReceiveLegoPostcard()
+    {
+        if(!playerInventory.HasLegoPostcard())
+        {
+            hasLegoCard = true;
+            playerInventory.ReceiveLegoPostcard(true);
+            playerInventory.ReceiveNewcard(true);
+            playerInventory.Save();
+        }
     }
 
     // Add random items here from time to time
@@ -145,29 +192,29 @@ public class Inventory : MonoBehaviour
     public Item RandomItemGenerator()
     {
         List<int> availableItems = new List<int>();
+        List<int> currentlyOwnedItems = new List<int>();
 
         foreach(Item item in backpackItems)
-        {
-            if(!usedItems.Contains(database.GetId[item]))
-                usedItems.Add(database.GetId[item]);
-        }
+            currentlyOwnedItems.Add(database.GetId[item]);
 
         foreach(Item item in discoveredItems)
-        {
-            if(!usedItems.Contains(database.GetId[item]))
-                usedItems.Add(database.GetId[item]);
-        }
+            if(!currentlyOwnedItems.Contains(database.GetId[item]))
+                currentlyOwnedItems.Add(database.GetId[item]);
 
         for(int i = 0; i < database.Items.Length; i++)
         {
-            if(usedItems.Contains(i))
+            if(currentlyOwnedItems.Contains(i))
                 continue;
             else
                 availableItems.Add(i);
         }
 
+        if(availableItems.Count == 0)
+            return database.GetItem[Random.Range(0, database.Items.Length)];
+
         int randomNumber = Random.Range(0, availableItems.Count);
-        return database.GetItem[randomNumber];
+        int selectedItem = availableItems[randomNumber];
+        return database.GetItem[selectedItem];
     }
 
     public void Reset()
@@ -179,9 +226,17 @@ public class Inventory : MonoBehaviour
 
         hasRecipeCard = false;
         hasGardenCard = false;
+        hasMusicCard = false;
+        hasFactCard = false;
+        hasLegoCard = false;
+        newCard = false;
 
         playerInventory.ReceiveRecipePostcard(false);
         playerInventory.ReceiveGardenPostcard(false);
+        playerInventory.ReceiveMusicPostcard(false);
+        playerInventory.ReceiveFactPostcard(false);
+        playerInventory.ReceiveLegoPostcard(false);
+        playerInventory.ReceiveNewcard(false);
 
         onItemChangedCallback.Invoke();
         

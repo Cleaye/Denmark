@@ -10,6 +10,7 @@ using TMPro;
 public class TabButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, IPointerExitHandler
 {
     public TabGroup tabGroup;
+    public GameObject newPostcardIcon;
 
     public Image background;
     public TextMeshProUGUI buttonText;
@@ -17,6 +18,7 @@ public class TabButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
     public void OnPointerClick(PointerEventData eventData)
     {
         tabGroup.OnTabSelected(this);
+        newPostcardIcon.SetActive(false);
     }
 
     public void OnPointerEnter(PointerEventData eventData)

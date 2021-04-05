@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 788e6d616052d9b4b87cb9e028ba6caa, type: 3}
   m_Name: FunFact1
   m_EditorClassIdentifier: 
+  id: 0
   name: Hans Christian Andersen
-  icon: {fileID: 3286163911610860551, guid: 58d93a7dc8f031b49891f528ecab1124, type: 3}
+  icon: {fileID: 3286163911610860551, guid: fefba52ceed7e574d874795d1ad76dba, type: 3}
   itemInformation: Did you know that the enchanting stories of The Little Mermaid,
     The Ugly Duckling, The Little Match Girl, The Princess and the Pea, and The Snow
     Queen were written by a Danish author, Hans Christian Andersen?
