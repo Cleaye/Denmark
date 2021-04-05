@@ -106,13 +106,21 @@ public class ItemPanelUI : MonoBehaviour
     {
         if(highlightedItemSlot != null)
         {
-            if(highlightedItemSlot.item.name.Contains("Recipe"))
+            if(highlightedItemSlot.item.name.Contains("Recipe") ||
+                highlightedItemSlot.item.name.Contains("Pølser") ||
+                highlightedItemSlot.item.name.Contains("Frikadellerr"))
                 inventory.ReceiveRecipePostcard();
             else if(highlightedItemSlot.item.name.Contains("Gardens"))
                 inventory.ReceiveGardenPostcard();
-            else if(highlightedItemSlot.item.name.Contains("Andersen") || highlightedItemSlot.item.name.Contains("Maps"))
+            else if(highlightedItemSlot.item.name.Contains("Andersen") || 
+                    highlightedItemSlot.item.name.Contains("Maps") || 
+                    highlightedItemSlot.item.name.Contains("Carlsberg") ||
+                    highlightedItemSlot.item.name.Contains("Oldest")||
+                    highlightedItemSlot.item.name.Contains("Little"))
                 inventory.ReceiveFactPostcard();
-            else if(highlightedItemSlot.item.name.Contains("MØ") || highlightedItemSlot.item.name.Contains("Rune")  || highlightedItemSlot.item.name.Contains("Corr"))
+            else if(highlightedItemSlot.item.name.Contains("MØ") || 
+                    highlightedItemSlot.item.name.Contains("Rune") || 
+                    highlightedItemSlot.item.name.Contains("Corr"))
                 inventory.ReceiveMusicPostcard();
             else if(highlightedItemSlot.item.name.Contains("LegoLand"))
                 inventory.ReceiveLegoPostcard();
