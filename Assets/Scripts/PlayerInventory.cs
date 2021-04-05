@@ -16,14 +16,14 @@ public class PlayerInventory : ScriptableObject, ISerializationCallbackReceiver
     public bool factPostCard = false;
     public bool legoPostCard = false;
     public bool newCard = false;
-    public List<Item> backpackInventory;
-    public List<Item> discoverInventory;
+    public List<Item> backpackInventory = new List<Item>();
+    public List<Item> discoverInventory = new List<Item>();
     public ItemDatabase database;
 
-    public List<int> lastOpenedDate;
-    bool receivedFirst;
-    bool receivedSecond;
-    bool receivedThird;
+    public List<int> lastOpenedDate = new List<int>();
+    bool receivedFirst = false;
+    bool receivedSecond = false;
+    bool receivedThird = false;
 
     public void Save()
     {

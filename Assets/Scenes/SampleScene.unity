@@ -7384,7 +7384,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &631814024
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11170,7 +11170,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &892781043
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15978,6 +15978,8 @@ MonoBehaviour:
   hasMusicCard: 0
   hasLegoCard: 0
   newCard: 0
+  development: 0
+  generateBasedOnTime: 1
   date: 
   backpackItems: []
   discoveredItems: []
