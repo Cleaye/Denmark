@@ -195,29 +195,29 @@ public class ItemPanelUI : MonoBehaviour
         }
 
         // Don't update immediately for player release
-        if(inventory.hasRecipeCard)
-            recipePostcard.SetActive(true);
-        else
-            recipePostcard.SetActive(false);
-        if(inventory.hasGardenCard)
-            gardenPostcard.SetActive(true);
-        else
-            gardenPostcard.SetActive(false);
-        if(inventory.hasMusicCard)
-            musicPostcard.SetActive(true);
-        else
-            musicPostcard.SetActive(false);
-        if(inventory.hasLegoCard)
-            legoPostcard.SetActive(true);
-        else
-            legoPostcard.SetActive(false);
-        if(inventory.hasFactCard)
-            factPostcard.SetActive(true);
-        else
-            factPostcard.SetActive(false);
-        if(inventory.newCard)
-            newPostcardIcon.SetActive(true);
-        else
-            newPostcardIcon.SetActive(false);
+        // if(inventory.hasRecipeCard)
+        //     recipePostcard.SetActive(true);
+        // else
+        //     recipePostcard.SetActive(false);
+        // if(inventory.hasGardenCard)
+        //     gardenPostcard.SetActive(true);
+        // else
+        //     gardenPostcard.SetActive(false);
+        // if(inventory.hasMusicCard)
+        //     musicPostcard.SetActive(true);
+        // else
+        //     musicPostcard.SetActive(false);
+        // if(inventory.hasLegoCard)
+        //     legoPostcard.SetActive(true);
+        // else
+        //     legoPostcard.SetActive(false);
+        // if(inventory.hasFactCard)
+        //     factPostcard.SetActive(true);
+        // else
+        //     factPostcard.SetActive(false);
+        // if(inventory.newCard)
+        //     newPostcardIcon.SetActive(true);
+        // else
+        //     newPostcardIcon.SetActive(false);
     }
 }
