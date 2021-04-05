@@ -124,6 +124,7 @@ public class Inventory : MonoBehaviour
         if(!playerInventory.HasRecipePostcard())
         {
             hasRecipeCard = true;
+            newCard = true;
             playerInventory.ReceiveRecipePostcard(true);
             playerInventory.ReceiveNewcard(true);
             playerInventory.Save();
@@ -135,6 +136,7 @@ public class Inventory : MonoBehaviour
         if(!playerInventory.HasGardenPostcard())
         {
             hasGardenCard = true;
+            newCard = true;
             playerInventory.ReceiveGardenPostcard(true);
             playerInventory.ReceiveNewcard(true);
             playerInventory.Save();
@@ -146,6 +148,7 @@ public class Inventory : MonoBehaviour
         if(!playerInventory.HasMusicPostcard())
         {
             hasMusicCard = true;
+            newCard = true;
             playerInventory.ReceiveMusicPostcard(true);
             playerInventory.ReceiveNewcard(true);
             playerInventory.Save();
@@ -157,6 +160,7 @@ public class Inventory : MonoBehaviour
         if(!playerInventory.HasFactPostcard())
         {
             hasFactCard = true;
+            newCard = true;
             playerInventory.ReceiveFactPostcard(true);
             playerInventory.ReceiveNewcard(true);
             playerInventory.Save();
@@ -168,10 +172,18 @@ public class Inventory : MonoBehaviour
         if(!playerInventory.HasLegoPostcard())
         {
             hasLegoCard = true;
+            newCard = true;
             playerInventory.ReceiveLegoPostcard(true);
             playerInventory.ReceiveNewcard(true);
             playerInventory.Save();
         }
+    }
+
+    public void ClickedOnNewPostcard()
+    {
+        newCard = false;
+        playerInventory.ReceiveNewcard(false);
+        playerInventory.Save();
     }
 
     // Add random items here from time to time
