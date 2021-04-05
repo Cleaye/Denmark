@@ -310,4 +310,9 @@ public class Inventory : MonoBehaviour
         
         playerInventory.Save();
     }
+
+    public void AddRandomItem()
+    {
+        AddToDiscoveredItems(RandomItemGenerator());
+    }
 }
